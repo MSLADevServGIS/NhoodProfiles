@@ -13,6 +13,8 @@ and is described in the NhoodProfile_Documentation.docx file.
 Simply double-click the script file to run.
 """
 
+# TODO: better error handling
+
 from __future__ import print_function
 import os
 import sys
@@ -26,10 +28,9 @@ import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 
 # Custom libs
-# sys.path.insert(0, r"\\cityfiles\DEVServices\WallyG\Scripts")
 from tkit import cli
 sys.path.insert(0, r"\\cityfiles\DEVServices\WallyG\Scripts\conversion")
-import pdftools  # FIXME: slower and shows the window for a split second...  # noqa
+import pdftools  # noqa
 
 
 # Print part of the info message above
@@ -93,8 +94,6 @@ def query_assets(layer_name, name_field):
         return "None"
     assets = list(assets)
     assets.sort()
-    # if layer_name == "HistoricSites":
-    #    return "; ".join(assets)
     return "<br>".join(assets)
 
 
@@ -107,7 +106,6 @@ def query_nhood(field):
     """
     return str([row[0] for row in arcpy.da.SearchCursor(layers["Nhoods"],
                 field)][0])
-    # TODO: join using "nhood_plans.csv" -- guiding documents
 
 
 def get_trail_mi():
@@ -140,7 +138,6 @@ def get_guidedocs(nhood_name):
                 ndocs.append(url.format(doc, urls[doc]))
             else:
                 ndocs.append(doc)
-    # ndocs.sort() # -- jk, don't sort. It would sort by url
     if not ndocs:
         return "None"
     return "<br>".join(ndocs)
@@ -170,7 +167,6 @@ def get_new_population():
     return new_pop
 
 
-# TODO: can this replace other functions?
 def sum_field(layer_name, field_name):
     """Sums a field."""
     arcpy.SelectLayerByLocation_management(
@@ -229,8 +225,8 @@ def get_data(nhood_name):
         layers["Nhoods"],
         "NEW_SELECTION",
         "Name = '{}'".format(nhood_name))
-    arcpy.SelectLayerByAttribute_management(  # NEW
-        layers["nhood_buffers"],  # now uses new nhood_buffers layer
+    arcpy.SelectLayerByAttribute_management(
+        layers["nhood_buffers"],
         "NEW_SELECTION",
         "Name = '{}'".format(nhood_name))
     data["loc_desc"] = get_desc(nhood_name)
@@ -241,6 +237,7 @@ def get_data(nhood_name):
     data["park_acres"] = round(sum_field("ParksAndCommons", "Acres"), 1)  # TODO: IDENT?
     data["trail_mi"] = get_trail_mi()
     data["pub_fac"] = query_assets("PublicFacilities", "FACILITY_NAME")
+    data["schools"] = query_assets("Schools", "School")  # NEW
     data["groceries"] = query_assets("SuperMarkets", "STORE_NAME")
     data["hist_res"] = query_assets("HistoricSites", "Name")
     data["current_year"] = year
