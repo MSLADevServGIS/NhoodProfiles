@@ -1,11 +1,12 @@
 # Ignored folders -- gw
 archive/
 data/
-edits_backup/
+Phase_*/
 profiles/
 
 # Misc ignored -- gw
-.zip
+*.zip
+*.mxd
 
 # Windows image file caches
 Thumbs.db

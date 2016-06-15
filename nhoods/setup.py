@@ -1,4 +1,4 @@
-Setup procedures
+# Setup procedures -- WIP
 
 import os
 import re
@@ -6,9 +6,16 @@ import re
 import arcpy
 
 arcpy.env.workspace = "in_memory"
-
+# TODO: out_gdb = "//cityfiles/DEVServices/WallyG/projects/NhoodProfiles/nhoods/data/NhoodAmenities.gdb/MtStatePlane"
 
 # DATA PROCESSING
+
+# Nhood_buffers:
+arcpy.Buffer_analysis("Nhoods", "nhood_buffers",
+                      buffer_distance_or_field="100 Feet",
+                      line_side="FULL", line_end_type="ROUND",
+                      dissolve_option="LIST", dissolve_field="Name",
+                      method="PLANAR")
 
 # Parks:
 

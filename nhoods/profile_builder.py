@@ -29,7 +29,7 @@ from jinja2 import Environment, FileSystemLoader
 # sys.path.insert(0, r"\\cityfiles\DEVServices\WallyG\Scripts")
 from tkit import cli
 sys.path.insert(0, r"\\cityfiles\DEVServices\WallyG\Scripts\conversion")
-import pdftools  # FIXME: slower and shows the window for a split second...
+import pdftools  # FIXME: slower and shows the window for a split second...  # noqa
 
 
 # Print part of the info message above
@@ -43,11 +43,11 @@ status = cli.StatusLine()
 # PARAMETERS
 
 status.write("Setting parameters...")
-year = datetime.now().year  # TIL arcpy f*cks up the datetime module import
-import arcpy
+year = datetime.now().year  # TIL arcpy botches up the datetime module import
+import arcpy  # noqa
 
 # Project directory
-nhood_dir = r"\\cityfiles\DEVServices\WallyG\projects\nhoods"
+nhood_dir = r"\\cityfiles\DEVServices\WallyG\projects\NhoodProfiles\nhoods"
 
 # Template names (MUST be saved in "templates" folder)
 profile_template = "profile_template.html"
@@ -236,21 +236,22 @@ def get_data(nhood_name):
     data = {}
     data["neighborhood_name"] = nhood_name
     arcpy.SelectLayerByAttribute_management(
-        layers["Nhoods"], "NEW_SELECTION",
+        layers["Nhoods"],  # layers["nhood_buffers"],
+        "NEW_SELECTION",
         "Name = '{}'".format(nhood_name))
     data["loc_desc"] = get_desc(nhood_name)
     data["date_est"] = query_nhood("Year_Created")
     data["area"] = round(float(query_nhood("Acres")), 1)
     data["council_reps"] = get_reps(nhood_name)
-    data["parks"] = query_assets("Parks", "Common_Name")
+    data["parks"] = query_assets("ParksAndCommons", "Name")
     data["park_acres"] = "PENDING"  # TODO: round(sum_field("Parks", "Acres"), 2)  # TODO: IDENT
     data["trail_mi"] = get_trail_mi()
-    data["pub_fac"] = query_assets("PublicFacilities", "FACILITY_NAME")  # , 100)
-    data["groceries"] = query_assets("SuperMarkets", "STORE_NAME")  # , 100)
+    data["pub_fac"] = query_assets("PublicFacilities", "FACILITY_NAME")
+    data["groceries"] = query_assets("SuperMarkets", "STORE_NAME")
     data["hist_res"] = query_assets("HistoricSites", "Name")
     data["current_year"] = year
     data["pop10"] = get_population()
-    data["pop_current"] = get_new_population() + data["pop10"]  # NEW
+    #data["pop_current"] = get_new_population() + data["pop10"]  # NEW
     data["house10"] = "PENDING"  # TODO: get_housing()
     data["house_current"] = "PENDING"  # TODO: cal_new_housing()
     data["new_dev"] = "PENDING"  # TODO:
@@ -280,17 +281,16 @@ if __name__ == '__main__':
     # Check that directories exist
     status.write("Checking environments...")
     try:
-        for _dir in _all_dirs:
-            if not os.path.exists(_dir):
-                raise IOError("Directory does not exist: {}".format(_dir))
-        # Prevent any possibility of overwriting the PDFs
+        if not all([os.path.exists(_dir) for _dir in _all_dirs]):
+            raise IOError("Directory does not exist: {}".format(_dir))
+            # Prevent any possibility of overwriting the PDFs
         if glob(os.path.join(profile_dir, "*.pdf")):
             raise IOError("PDFs Exist")
         sleep(1)
         status.success()
-    except:
+    except IOError as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # Load HTML and Map templates
@@ -309,9 +309,9 @@ if __name__ == '__main__':
         mxd = arcpy.mapping.MapDocument(map_template)
         df = arcpy.mapping.ListDataFrames(mxd)[0]
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # Make dictionary of layers in mxd template
@@ -319,9 +319,9 @@ if __name__ == '__main__':
     try:
         layers = {layer.name: layer for layer in arcpy.mapping.ListLayers(df)}
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # List neighborhood names
@@ -330,9 +330,9 @@ if __name__ == '__main__':
         nhood_names = [n[0] for n in arcpy.da.SearchCursor(layers["Nhoods"],
                                                            "NAME")]
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # Load misc data
@@ -342,9 +342,9 @@ if __name__ == '__main__':
         links = pd.read_excel(guides_dir, "PlanList")
         urls = {v[0]: v[2] for k, v in links.iterrows()}
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # Make profiles
@@ -353,9 +353,10 @@ if __name__ == '__main__':
         # List comprehension to make all profiles
         [make_profile(get_data(nhood)) for nhood in set(nhood_names)]
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        print(cli.GetError(wait=True))
+        raw_input()
         sys.exit(1)
 
     # Convert all HTML profiles into PDFs
@@ -365,9 +366,9 @@ if __name__ == '__main__':
         [pdftools.to_pdf(os.path.join(profile_dir, f)) for f in
          os.listdir(profile_dir)]
         status.success()
-    except:
+    except Exception as e:
         status.failure()
-        cli.GetError(wait=True)
+        raw_input(e.message)  #cli.GetError(wait=True)
         sys.exit(1)
 
     # TODO: push pdfs & html files to separate folders on FTP
