@@ -69,8 +69,8 @@ status.success()
 # FUNCTIONS
 
 
-def query_assets(layer_name, name_field):  # , search_dist=0):
-    """Gets names of features that "INTERSECT" nhood boundaries.
+def query_assets(layer_name, name_field):
+    """Gets names of features that "INTERSECT" nhood_buffers.
 
     Args:
         layer_name (str): the name of the layer to be queried.
@@ -78,18 +78,8 @@ def query_assets(layer_name, name_field):  # , search_dist=0):
     Returns:
         A string of names seperated by an HTML break <br> (newline).
     """
-    # Option for search distance
-    '''if search_dist:
-        try:
-            arcpy.SelectLayerByLocation_management(
-                layers[layer_name], "INTERSECT", layers["Nhoods"], "",
-                "{} Feet".format(search_dist), "NEW_SELECTION")
-        except:
-            print(arcpy.GetMessages(0))
-            raw_input("Press Enter")
-    else:'''
     arcpy.SelectLayerByLocation_management(
-        layers[layer_name], "INTERSECT", layers["Nhoods"], "",
+        layers[layer_name], "INTERSECT", layers["nhood_buffers"], "",
         "NEW_SELECTION")
     assets = set([n[0] for n in arcpy.da.SearchCursor(layers[layer_name],
                   name_field)])
@@ -236,7 +226,11 @@ def get_data(nhood_name):
     data = {}
     data["neighborhood_name"] = nhood_name
     arcpy.SelectLayerByAttribute_management(
-        layers["Nhoods"],  # layers["nhood_buffers"],
+        layers["Nhoods"],
+        "NEW_SELECTION",
+        "Name = '{}'".format(nhood_name))
+    arcpy.SelectLayerByAttribute_management(  # NEW
+        layers["nhood_buffers"],  # now uses new nhood_buffers layer
         "NEW_SELECTION",
         "Name = '{}'".format(nhood_name))
     data["loc_desc"] = get_desc(nhood_name)
@@ -244,7 +238,7 @@ def get_data(nhood_name):
     data["area"] = round(float(query_nhood("Acres")), 1)
     data["council_reps"] = get_reps(nhood_name)
     data["parks"] = query_assets("ParksAndCommons", "Name")
-    data["park_acres"] = "PENDING"  # TODO: round(sum_field("Parks", "Acres"), 2)  # TODO: IDENT
+    data["park_acres"] = round(sum_field("ParksAndCommons", "Acres"), 1)  # TODO: IDENT?
     data["trail_mi"] = get_trail_mi()
     data["pub_fac"] = query_assets("PublicFacilities", "FACILITY_NAME")
     data["groceries"] = query_assets("SuperMarkets", "STORE_NAME")
