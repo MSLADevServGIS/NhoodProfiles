@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<body>
+	<style>
+		@font-face	{
+			font-family: "Garamond";
+			src: url(C:\Windows\Fonts\Garamond.ttf);
+		}
+
+		/* Custom div with 2 columns */
+		#section {
+			width: 85%;
+			float: left;
+			padding: 10px;
+			font-family: "Garamond";
+			
+			/* Bounding box -- not really a great idea after all
+			height: 120%;
+			padding-bottom: 25px;
+			border: 2.5px solid black;
+			border-radius: 25px;
+			margin-left: .5in;
+			*/
+			
+			/* Columns */
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+			-moz-column-count: 2; /* Firefox */
+			column-count: 2;
+		}
+		
+		/* Used for lists */
+		ul	{
+			margin-top: 0px;
+			padding-left: 0px;
+			margin-left: 0px;
+			-webkit-column-break-inside: avoid;
+			-webkit-page-break-inside: avoid;
+			-moz-column-break-inside: avoid;
+			-moz-page-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid-column;
+		}
+		
+		h1	{
+			column-span: all;
+			-webkit-column-span: all;
+			-moz-column-span: all;
+			
+			}
+
+		h2	{
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		
+		p	{
+			padding-left: 30px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			font-family:"Garamond";
+		}
+
+	</style>
+
+	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+	<h1 align="center">Heart of Missoula</h1> -->
+	
+	<div id="section">
+		<!-- <h1 align="center">Heart of Missoula</h1><br> <!--Broken-->
+		<ul>
+			<h2>Location Description:</h2>
+			<p>The Clark Fork River north to the railroad tracks and from May St. east along E. Broadway to the end of Easy St.</p>
+		</ul>
+
+		<ul>
+			<h2 style="display: inline-block">Date of Creation:</h2>
+			<p style="display: inline-block; margin-left: 3px">1996</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Neighborhood Size:</h2>
+			<p style="display: inline-block; margin-left: 3px">535.0 Acres</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2>Wards and Representatives:</h2>
+			<p>Ward 1: Bryan von Lossberg and Heidi West</p>
+		</ul>
+		
+		<ul>
+			<h2>Population:</h2>
+			<p>2010 Census: 2684</p>
+			<p>2016 Estimate: 2693</p>
+		</ul>
+		
+		<ul>
+			<h2>Housing:</h2>
+			<p>2010 Census: 1628.0 Units</p>
+			<p>2016 Estimate: 1684.0 Units</p>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Miles of Trail:</h2>
+			<p style="display: inline-block; margin-left: 3px">3.0</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+			<p style="display: inline-block; margin-left: 3px">41.6 Acres</p>
+			<br>-->
+			<h2>Parks and Open Space:</h2>
+			<p>BN Plaza<br>Ben Hughes Addition Common Area<br>Ben Hughes E<br>Ben Hughes W<br>Bess Reed<br>Caras<br>Creekside Natural Area<br>Edgewater Condominiums Common Area<br>Goldsmiths Trail<br>Hellgate<br>Jacobs Island<br>Kim Williams Natural Area<br>Kiwanis<br>Little McCormick<br>McCormick<br>Mccormick Addition Common Area<br>Mount Jumbo<br>N Riverside Trail<br>RUX<br>Riverside Trail N_Fox site<br>Toole<br>Wj Mccormicks Addition Common Area</p>
+			<p>41.6 Acres</p>
+		</ul>
+		
+		<ul>
+			<h2>Public Facilities:</h2>
+			<p>City/County Health Department<br>Missoula City Hall<br>Missoula County Courthouse<br>Missoula County Deputy<br>Missoula Fire Dept Station 1<br>Missoula Public Library<br>Partnership Health Center<br>St Patrick Hospital<br>US Federal Court<br>US Post Office - Hellgate</p>
+		</ul>
+		
+		<ul>
+			<h2>Schools:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Grocery Stores:</h2>
+			<p>Albertsons</p>
+		</ul>
+		
+		<ul>
+			<h2>Historic Resources:</h2>
+			<p>Apartment Building at 116 Spruce Street<br>Atlantic Hotel<br>Belmont Hotel<br>Bluebird Building<br>Brunswick Hotel<br>Carnegie Public Library<br>Dixon--Duncan Block<br>Florence Hotel<br>Forkenbrock Funeral Home<br>Garden City Drug<br>Gleim Building<br>Gleim Building II<br>Grand Pacific Hotel<br>Hammond Arcade<br>Headquarters Building and Daily Company Ann<br>Hellgate Lodge 383 BPOE<br>Higgins Block<br>Independent Telephone Company Building<br>Johnston, John S., House<br>Labor Temple<br>Lenox Flats<br>Lucy Building<br>Marsh and Powell Funeral Home<br>Masonic Lodge<br>Missoula County Courthouse<br>Missoula Laundry Company<br>Missoula Mercantile<br>Missoula Mercantile Warehouse<br>Model Laundry and Apartments<br>Montgomery Ward<br>Mrs. Lydia McCaffery's Furnished Rooms<br>Northern Pacific Railroad Depot<br>Orange Street Underpass<br>Palace Hotel<br>Reid House<br>Simons Block<br>St. Francis Xavier Church<br>Studebaker Building<br>U.S. Post Office<br>Wilma Theatre<br>Zip Auto</p>
+		</ul>
+
+		<h2>New Development:</h2>
+		<p>PENDING</p><br>
+		
+		<ul>
+			<h2>Guiding Documents:</h2>
+			<p><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/22444" title="Missoula Greater Downtown Master Plan">Missoula Greater Downtown Master Plan</a><br><a href="ftp://ftp.ci.missoula.mt.us/DEV%20ftp%20files/Documents/LRCity/NSWS/2000%20Joint%20NSWS%20Plan.pdf" title="Joint Northside/Westside Neighborhood Plan">Joint Northside/Westside Neighborhood Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/34746" title="Our Missoula City Growth Policy 2035">Our Missoula City Growth Policy 2035</a><br><a href="ftp://ftp.ci.missoula.mt.us/documents/MRA/URD%20Front%20Street/Front_Street_URD_Plan-Final.pdf" title="URD - Front Street">URD - Front Street</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/Home/View/656" title="URD - Riverfront Triangle">URD - Riverfront Triangle</a><br><a href="http://mt-missoula3.civicplus.com/DocumentCenter/View/27693" title="URD - Hellgate">URD - Hellgate</a></p>
+		</ul>
+
+	</div>
+</body>

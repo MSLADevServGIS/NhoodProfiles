@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<body>
+	<style>
+		@font-face	{
+			font-family: "Garamond";
+			src: url(C:\Windows\Fonts\Garamond.ttf);
+		}
+
+		/* Custom div with 2 columns */
+		#section {
+			width: 85%;
+			float: left;
+			padding: 10px;
+			font-family: "Garamond";
+			
+			/* Bounding box -- not really a great idea after all
+			height: 120%;
+			padding-bottom: 25px;
+			border: 2.5px solid black;
+			border-radius: 25px;
+			margin-left: .5in;
+			*/
+			
+			/* Columns */
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+			-moz-column-count: 2; /* Firefox */
+			column-count: 2;
+		}
+		
+		/* Used for lists */
+		ul	{
+			margin-top: 0px;
+			padding-left: 0px;
+			margin-left: 0px;
+			-webkit-column-break-inside: avoid;
+			-webkit-page-break-inside: avoid;
+			-moz-column-break-inside: avoid;
+			-moz-page-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid-column;
+		}
+		
+		h1	{
+			column-span: all;
+			-webkit-column-span: all;
+			-moz-column-span: all;
+			
+			}
+
+		h2	{
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		
+		p	{
+			padding-left: 30px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			font-family:"Garamond";
+		}
+
+	</style>
+
+	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+	<h1 align="center">Captain John Mullan</h1> -->
+	
+	<div id="section">
+		<!-- <h1 align="center">Captain John Mullan</h1><br> <!--Broken-->
+		<ul>
+			<h2>Location Description:</h2>
+			<p>Reserve St. to the Wye and from the Clark Fork River to Broadway (Highway 10 West).</p>
+		</ul>
+
+		<ul>
+			<h2 style="display: inline-block">Date of Creation:</h2>
+			<p style="display: inline-block; margin-left: 3px">2007</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Neighborhood Size:</h2>
+			<p style="display: inline-block; margin-left: 3px">1236.5 Acres</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2>Wards and Representatives:</h2>
+			<p>Ward 2: Jordan Hess and Harlan Wells</p>
+		</ul>
+		
+		<ul>
+			<h2>Population:</h2>
+			<p>2010 Census: 3324</p>
+			<p>2016 Estimate: 3626</p>
+		</ul>
+		
+		<ul>
+			<h2>Housing:</h2>
+			<p>2010 Census: 1474.0 Units</p>
+			<p>2016 Estimate: 1664.0 Units</p>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Miles of Trail:</h2>
+			<p style="display: inline-block; margin-left: 3px">1.6</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+			<p style="display: inline-block; margin-left: 3px">59.9 Acres</p>
+			<br>-->
+			<h2>Parks and Open Space:</h2>
+			<p>44 Ranch<br>Country Crest Common Area<br>Dino Estates Common Area<br>El Mar Estates Common Area<br>Flynn<br>Flynn Ranch Common Area<br>Hellgate Meadows Common Area<br>Mullan Trail Common Area<br>Phantom Hills Common Area<br>Pleasant View<br>Pleasant View Homes Common Area<br>Riverwalk Estates Common Area<br>The Ranch Club Common Area</p>
+			<p>59.9 Acres</p>
+		</ul>
+		
+		<ul>
+			<h2>Public Facilities:</h2>
+			<p>Missoula Rural Fire Dept Station 6</p>
+		</ul>
+		
+		<ul>
+			<h2>Schools:</h2>
+			<p>Hellgate Middle School<br>Lower Grade Hellgate</p>
+		</ul>
+		
+		<ul>
+			<h2>Grocery Stores:</h2>
+			<p>Walmart Supercenter</p>
+		</ul>
+		
+		<ul>
+			<h2>Historic Resources:</h2>
+			<p>None</p>
+		</ul>
+
+		<h2>New Development:</h2>
+		<p>PENDING</p><br>
+		
+		<ul>
+			<h2>Guiding Documents:</h2>
+			<p><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/22449" title="Wye-Mullen Plan">Wye-Mullen Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/34746" title="Our Missoula City Growth Policy 2035">Our Missoula City Growth Policy 2035</a><br><a href="ftp://ftp.ci.missoula.mt.us/Documents/MRA/Webpage%20docs-pix/NorthReserveScottStreetUrbanRenewalPlanFinal.pdf" title="URD - North Reserve - Scott St">URD - North Reserve - Scott St</a></p>
+		</ul>
+
+	</div>
+</body>

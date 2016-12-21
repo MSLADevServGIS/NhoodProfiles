@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<body>
+	<style>
+		@font-face	{
+			font-family: "Garamond";
+			src: url(C:\Windows\Fonts\Garamond.ttf);
+		}
+
+		/* Custom div with 2 columns */
+		#section {
+			width: 85%;
+			float: left;
+			padding: 10px;
+			font-family: "Garamond";
+			
+			/* Bounding box -- not really a great idea after all
+			height: 120%;
+			padding-bottom: 25px;
+			border: 2.5px solid black;
+			border-radius: 25px;
+			margin-left: .5in;
+			*/
+			
+			/* Columns */
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+			-moz-column-count: 2; /* Firefox */
+			column-count: 2;
+		}
+		
+		/* Used for lists */
+		ul	{
+			margin-top: 0px;
+			padding-left: 0px;
+			margin-left: 0px;
+			-webkit-column-break-inside: avoid;
+			-webkit-page-break-inside: avoid;
+			-moz-column-break-inside: avoid;
+			-moz-page-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid-column;
+		}
+		
+		h1	{
+			column-span: all;
+			-webkit-column-span: all;
+			-moz-column-span: all;
+			
+			}
+
+		h2	{
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		
+		p	{
+			padding-left: 30px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			font-family:"Garamond";
+		}
+
+	</style>
+
+	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+	<h1 align="center">Franklin to the Fort</h1> -->
+	
+	<div id="section">
+		<!-- <h1 align="center">Franklin to the Fort</h1><br> <!--Broken-->
+		<ul>
+			<h2>Location Description:</h2>
+			<p>S. 3rd St. W. and Russell St. south to the Bitterroot Spur Trail, following the Bitterroot Spur Trail to Reserve St., north along Reserve St. to S. 3rd St. W., and along S. 3rd St. W. to Russell St.</p>
+		</ul>
+
+		<ul>
+			<h2 style="display: inline-block">Date of Creation:</h2>
+			<p style="display: inline-block; margin-left: 3px">2001</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Neighborhood Size:</h2>
+			<p style="display: inline-block; margin-left: 3px">832.9 Acres</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2>Wards and Representatives:</h2>
+			<p>Ward 5: Julie Armstrong and Annelise Hedahl<br>Ward 6: Michelle Cares and Marilyn Marler</p>
+		</ul>
+		
+		<ul>
+			<h2>Population:</h2>
+			<p>2010 Census: 7104</p>
+			<p>2016 Estimate: 7422</p>
+		</ul>
+		
+		<ul>
+			<h2>Housing:</h2>
+			<p>2010 Census: 3391.0 Units</p>
+			<p>2016 Estimate: 3554.0 Units</p>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Miles of Trail:</h2>
+			<p style="display: inline-block; margin-left: 3px">1.6</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+			<p style="display: inline-block; margin-left: 3px">15.5 Acres</p>
+			<br>-->
+			<h2>Parks and Open Space:</h2>
+			<p>Bitterroot Trail<br>Bridge Court Village Common Area<br>Carline Add No 3 Common Area<br>Clark Street Townhomes Common Area<br>Cottage<br>Franklin<br>Larchmont Golf Course<br>West Central Square Common Area<br>West Central Village Common Area</p>
+			<p>15.5 Acres</p>
+		</ul>
+		
+		<ul>
+			<h2>Public Facilities:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Schools:</h2>
+			<p>Franklin School</p>
+		</ul>
+		
+		<ul>
+			<h2>Grocery Stores:</h2>
+			<p>Good Food Store<br>Rosauers</p>
+		</ul>
+		
+		<ul>
+			<h2>Historic Resources:</h2>
+			<p>None</p>
+		</ul>
+
+		<h2>New Development:</h2>
+		<p>PENDING</p><br>
+		
+		<ul>
+			<h2>Guiding Documents:</h2>
+			<p><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/4602" title="Fort Missoula Regional Park Master Plan">Fort Missoula Regional Park Master Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/23744" title="Franklin to the Fort Infrastructure Plan">Franklin to the Fort Infrastructure Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/22424" title="Reserve Street Area Plan">Reserve Street Area Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/34746" title="Our Missoula City Growth Policy 2035">Our Missoula City Growth Policy 2035</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/70" title="URD - II">URD - II</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/140" title="URD - III">URD - III</a></p>
+		</ul>
+
+	</div>
+</body>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<body>
+	<style>
+		@font-face	{
+			font-family: "Garamond";
+			src: url(C:\Windows\Fonts\Garamond.ttf);
+		}
+
+		/* Custom div with 2 columns */
+		#section {
+			width: 85%;
+			float: left;
+			padding: 10px;
+			font-family: "Garamond";
+			
+			/* Bounding box -- not really a great idea after all
+			height: 120%;
+			padding-bottom: 25px;
+			border: 2.5px solid black;
+			border-radius: 25px;
+			margin-left: .5in;
+			*/
+			
+			/* Columns */
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+			-moz-column-count: 2; /* Firefox */
+			column-count: 2;
+		}
+		
+		/* Used for lists */
+		ul	{
+			margin-top: 0px;
+			padding-left: 0px;
+			margin-left: 0px;
+			-webkit-column-break-inside: avoid;
+			-webkit-page-break-inside: avoid;
+			-moz-column-break-inside: avoid;
+			-moz-page-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid-column;
+		}
+		
+		h1	{
+			column-span: all;
+			-webkit-column-span: all;
+			-moz-column-span: all;
+			
+			}
+
+		h2	{
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		
+		p	{
+			padding-left: 30px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			font-family:"Garamond";
+		}
+
+	</style>
+
+	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+	<h1 align="center">Moose Can Gully</h1> -->
+	
+	<div id="section">
+		<!-- <h1 align="center">Moose Can Gully</h1><br> <!--Broken-->
+		<ul>
+			<h2>Location Description:</h2>
+			<p>Runs out of Moose Canyon, below Mt. Dean Stone. It passes Chief Charlo School and ends at Garland Park on 23rd Avenue.</p>
+		</ul>
+
+		<ul>
+			<h2 style="display: inline-block">Date of Creation:</h2>
+			<p style="display: inline-block; margin-left: 3px">1996</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Neighborhood Size:</h2>
+			<p style="display: inline-block; margin-left: 3px">804.5 Acres</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2>Wards and Representatives:</h2>
+			<p>Ward 4: John DiBari and Jon Wilkins<br>Ward 5: Julie Armstrong and Annelise Hedahl</p>
+		</ul>
+		
+		<ul>
+			<h2>Population:</h2>
+			<p>2010 Census: 4637</p>
+			<p>2016 Estimate: 4644</p>
+		</ul>
+		
+		<ul>
+			<h2>Housing:</h2>
+			<p>2010 Census: 1691.0 Units</p>
+			<p>2016 Estimate: 1694.0 Units</p>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Miles of Trail:</h2>
+			<p style="display: inline-block; margin-left: 3px">2.4</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+			<p style="display: inline-block; margin-left: 3px">87.0 Acres</p>
+			<br>-->
+			<h2>Parks and Open Space:</h2>
+			<p>Amber Ridge Common Area<br>Bigsky Addition Common Area<br>Blackthorn<br>Clearview Village Condominiums Common Area<br>Elk Hills Phase I Common Area<br>Floral<br>Garland<br>Grandvue Village Condominiums Common Area<br>High<br>Hillview Heights<br>Hillview Heights Common Area<br>Lolo View Heights Common Area<br>Meadowlark Acres<br>Meadowlark Acres Common Area<br>Moose Can Gully<br>Mountain Shadows West Common Area<br>Peery<br>Ravenwood Hills<br>Rawlings Addition Common Area<br>Ridge The Common Area<br>River Pine<br>Skyview<br>South Side Homes Common Area<br>The Ridge Two Common Area<br>Upper Moosecan Gulch Trail Corridor<br>Village Common Area<br>Willow Ridge Condominiums Common Area<br>Woodbine</p>
+			<p>87.0 Acres</p>
+		</ul>
+		
+		<ul>
+			<h2>Public Facilities:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Schools:</h2>
+			<p>Chief Charlo School</p>
+		</ul>
+		
+		<ul>
+			<h2>Grocery Stores:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Historic Resources:</h2>
+			<p>None</p>
+		</ul>
+
+		<h2>New Development:</h2>
+		<p>PENDING</p><br>
+		
+		<ul>
+			<h2>Guiding Documents:</h2>
+			<p><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/22405" title="Miller Creek Comprehensive Plan Amendment">Miller Creek Comprehensive Plan Amendment</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/22446" title="South Hill Comprehensive Plan">South Hill Comprehensive Plan</a><br><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/34746" title="Our Missoula City Growth Policy 2035">Our Missoula City Growth Policy 2035</a></p>
+		</ul>
+
+	</div>
+</body>

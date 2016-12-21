@@ -44,8 +44,6 @@ status = cli.StatusLine()
 # PARAMETERS
 
 status.write("Setting parameters...")
-year = datetime.now().year  # TIL arcpy botches up the datetime module import
-import arcpy  # noqa
 
 # Project directory
 nhood_dir = r"\\cityfiles\DEVServices\WallyG\projects\NhoodProfiles\nhoods"
@@ -60,8 +58,18 @@ desc_dir = os.path.join(nhood_dir, "descriptions")
 profile_dir = os.path.join(nhood_dir, "profiles")
 template_dir = os.path.join(nhood_dir, "templates")
 
-
 _all_dirs = [nhood_dir, wards_dir, desc_dir, profile_dir, template_dir]
+
+
+# Testing vars
+OUTPUT_PDF = True  # Default True
+OVERWRITE_PDF = False  # Default False
+
+# =============== DON'T TOUCH ===============
+# arcpy botches up the datetime module import
+year = datetime.now().year
+import arcpy  # noqa
+# ===========================================
 
 status.success()
 
@@ -234,17 +242,17 @@ def get_data(nhood_name):
     data["area"] = round(float(query_nhood("Acres")), 1)
     data["council_reps"] = get_reps(nhood_name)
     data["parks"] = query_assets("ParksAndCommons", "Name")
-    data["park_acres"] = round(sum_field("ParksAndCommons", "Acres"), 1)  # TODO: IDENT?
+    data["park_acres"] = round(sum_field("ParksAndCommons", "Acres"), 1)
     data["trail_mi"] = get_trail_mi()
     data["pub_fac"] = query_assets("PublicFacilities", "FACILITY_NAME")
-    data["schools"] = query_assets("Schools", "School")  # NEW
+    data["schools"] = query_assets("Schools", "School")
     data["groceries"] = query_assets("SuperMarkets", "STORE_NAME")
     data["hist_res"] = query_assets("HistoricSites", "Name")
     data["current_year"] = year
     data["pop10"] = get_population()
-    #data["pop_current"] = get_new_population() + data["pop10"]  # NEW
-    data["house10"] = "PENDING"  # TODO: get_housing()
-    data["house_current"] = "PENDING"  # TODO: cal_new_housing()
+    data["pop_current"] = get_new_population() + data["pop10"]  # NEW
+    data["house10"] = sum_field("ORION_2014", "LIVUNITS")  # 2014
+    data["house_current"] = data["house10"] + sum_field("permit_blocks", "dwellings")
     data["new_dev"] = "PENDING"  # TODO:
     data["guide_docs"] = get_guidedocs(nhood_name)
     return data
@@ -275,8 +283,8 @@ if __name__ == '__main__':
         if not all([os.path.exists(_dir) for _dir in _all_dirs]):
             raise IOError("Directory does not exist: {}".format(_dir))
             # Prevent any possibility of overwriting the PDFs
-        if glob(os.path.join(profile_dir, "*.pdf")):
-            raise IOError("PDFs Exist")
+        if glob(os.path.join(profile_dir, "*.pdf")) and not OVERWRITE_PDF:
+            raise IOError("PDF Overwrite Disabled")
         sleep(1)
         status.success()
     except IOError as e:
@@ -351,16 +359,17 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Convert all HTML profiles into PDFs
-    status.write("Exporting to pdf...")
-    try:
-        # List comprehension to convert all profiles to PDF  # TODO: Change?
-        [pdftools.to_pdf(os.path.join(profile_dir, f)) for f in
-         os.listdir(profile_dir)]
-        status.success()
-    except Exception as e:
-        status.failure()
-        raw_input(e.message)  #cli.GetError(wait=True)
-        sys.exit(1)
+    if OUTPUT_PDF:
+        status.write("Exporting to pdf...")
+        try:
+            # Convert all profiles to PDF  # TODO: Change?
+            [pdftools.to_pdf(os.path.join(profile_dir, f)) for f in
+             os.listdir(profile_dir)]
+            status.success()
+        except Exception as e:
+            status.failure()
+            raw_input(e.message)  #cli.GetError(wait=True)
+            sys.exit(1)
 
     # TODO: push pdfs & html files to separate folders on FTP
 

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<body>
+	<style>
+		@font-face	{
+			font-family: "Garamond";
+			src: url(C:\Windows\Fonts\Garamond.ttf);
+		}
+
+		/* Custom div with 2 columns */
+		#section {
+			width: 85%;
+			float: left;
+			padding: 10px;
+			font-family: "Garamond";
+			
+			/* Bounding box -- not really a great idea after all
+			height: 120%;
+			padding-bottom: 25px;
+			border: 2.5px solid black;
+			border-radius: 25px;
+			margin-left: .5in;
+			*/
+			
+			/* Columns */
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+			-moz-column-count: 2; /* Firefox */
+			column-count: 2;
+		}
+		
+		/* Used for lists */
+		ul	{
+			margin-top: 0px;
+			padding-left: 0px;
+			margin-left: 0px;
+			-webkit-column-break-inside: avoid;
+			-webkit-page-break-inside: avoid;
+			-moz-column-break-inside: avoid;
+			-moz-page-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid-column;
+		}
+		
+		h1	{
+			column-span: all;
+			-webkit-column-span: all;
+			-moz-column-span: all;
+			
+			}
+
+		h2	{
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+		
+		p	{
+			padding-left: 30px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			font-family:"Garamond";
+		}
+
+	</style>
+
+	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+	<h1 align="center">East Missoula</h1> -->
+	
+	<div id="section">
+		<!-- <h1 align="center">East Missoula</h1><br> <!--Broken-->
+		<ul>
+			<h2>Location Description:</h2>
+			<p>North of I90 to the Clark Fork River, and South of I90 along Deer Creek Rd and the Clark Fork, North of Shooting Center Ln.</p>
+		</ul>
+
+		<ul>
+			<h2 style="display: inline-block">Date of Creation:</h2>
+			<p style="display: inline-block; margin-left: 3px">2006</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Neighborhood Size:</h2>
+			<p style="display: inline-block; margin-left: 3px">470.9 Acres</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<h2>Wards and Representatives:</h2>
+			<p>Ward 1: Bryan von Lossberg and Heidi West</p>
+		</ul>
+		
+		<ul>
+			<h2>Population:</h2>
+			<p>2010 Census: 94</p>
+			<p>2016 Estimate: 114</p>
+		</ul>
+		
+		<ul>
+			<h2>Housing:</h2>
+			<p>2010 Census: 80.0 Units</p>
+			<p>2016 Estimate: 90.0 Units</p>
+		</ul>
+		
+		<ul>
+			<h2 style="display: inline-block">Miles of Trail:</h2>
+			<p style="display: inline-block; margin-left: 3px">2.2</p>
+			<br>
+		</ul>
+		
+		<ul>
+			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+			<p style="display: inline-block; margin-left: 3px">2.3 Acres</p>
+			<br>-->
+			<h2>Parks and Open Space:</h2>
+			<p>Canyon River Common Area<br>Water'S Edge Common Area</p>
+			<p>2.3 Acres</p>
+		</ul>
+		
+		<ul>
+			<h2>Public Facilities:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Schools:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Grocery Stores:</h2>
+			<p>None</p>
+		</ul>
+		
+		<ul>
+			<h2>Historic Resources:</h2>
+			<p>None</p>
+		</ul>
+
+		<h2>New Development:</h2>
+		<p>PENDING</p><br>
+		
+		<ul>
+			<h2>Guiding Documents:</h2>
+			<p><a href="http://www.ci.missoula.mt.us/DocumentCenter/View/34746" title="Our Missoula City Growth Policy 2035">Our Missoula City Growth Policy 2035</a></p>
+		</ul>
+
+	</div>
+</body>

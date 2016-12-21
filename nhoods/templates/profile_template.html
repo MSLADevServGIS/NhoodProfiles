@@ -1,147 +1,170 @@
 <!DOCTYPE html>
+<head>
+  <style>
+  @page {
+    size: 11in 8.5in portrait;
+  }
+  
+  @font-face	{
+    font-family: "Garamond";
+    src: url(C:\Windows\Fonts\Garamond.ttf);
+  }
+
+  .body {
+    font-family: "Garamond";
+  }
+  
+  /* div with boarder */
+  #boarder {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    height: 10in;
+    width: 7.5in;
+    
+    padding: 40px;
+    padding-top: 10px;
+    border: 2.5px solid black;
+    border-radius: 25px;
+  }
+
+
+  #columns {
+  /* Columns */
+  padding-top: 10px;
+  padding-bottom: 25px;
+  padding-right: 40px;
+  padding-left: 40px;
+  text-align: left;
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+  }
+
+  /* Used for lists */
+  ul	{
+  margin-top: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  -webkit-column-break-inside: avoid;
+  -webkit-page-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -moz-page-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+  }
+
+  h1	{
+  column-span: all;
+  -webkit-column-span: all;
+  -moz-column-span: all;
+
+  }
+
+  h2	{
+  margin-top: 0px;
+  margin-bottom: 5px;
+  }
+
+  p	{
+  padding-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-family:"Garamond";
+  }
+
+  </style>
+</head>
+
 <body>
-	<style>
-		@font-face	{
-			font-family: "Garamond";
-			src: url(C:\Windows\Fonts\Garamond.ttf);
-		}
+  <!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
+  <h1 align="center">{{ neighborhood_name }}</h1> -->
+  <div id="boarder">
+    <h1>{{title}}</h1>
 
-		/* Custom div with 2 columns */
-		#section {
-			width: 85%;
-			float: left;
-			padding: 10px;
-			font-family: "Garamond";
-			
-			/* Bounding box -- not really a great idea after all
-			height: 120%;
-			padding-bottom: 25px;
-			border: 2.5px solid black;
-			border-radius: 25px;
-			margin-left: .5in;
-			*/
-			
-			/* Columns */
-			-webkit-column-count: 2; /* Chrome, Safari, Opera */
-			-moz-column-count: 2; /* Firefox */
-			column-count: 2;
-		}
-		
-		/* Used for lists */
-		ul	{
-			margin-top: 0px;
-			padding-left: 0px;
-			margin-left: 0px;
-			-webkit-column-break-inside: avoid;
-			-webkit-page-break-inside: avoid;
-			-moz-column-break-inside: avoid;
-			-moz-page-break-inside: avoid;
-			page-break-inside: avoid;
-			break-inside: avoid-column;
-		}
-		
-		h1	{
-			column-span: all;
-			-webkit-column-span: all;
-			-moz-column-span: all;
-			
-			}
+    <div id="columns">
+    <!-- <h1 align="center">{{ neighborhood_name }}</h1><br> <!--Broken-->
+    <ul>
+    <h2>Location Description:</h2>
+    <p>{{ loc_desc }}</p>
+    </ul>
 
-		h2	{
-			margin-top: 0px;
-			margin-bottom: 5px;
-		}
-		
-		p	{
-			padding-left: 30px;
-			margin-top: 10px;
-			margin-bottom: 0px;
-			font-family:"Garamond";
-		}
+    <ul>
+    <h2 style="display: inline-block">Date of Creation:</h2>
+    <p style="display: inline-block; margin-left: 3px">{{ date_est }}</p>
+    <br>
+    </ul>
 
-	</style>
+    <ul>
+    <h2 style="display: inline-block">Neighborhood Size:</h2>
+    <p style="display: inline-block; margin-left: 3px">{{ area }} Acres</p>
+    <br>
+    </ul>
 
-	<!-- Page title. TODO: put inside bounding box. Maybe make this a link to the nhood website
-	<h1 align="center">{{ neighborhood_name }}</h1> -->
-	
-	<div id="section">
-		<!-- <h1 align="center">{{ neighborhood_name }}</h1><br> <!--Broken-->
-		<ul>
-			<h2>Location Description:</h2>
-			<p>{{ loc_desc }}</p>
-		</ul>
+    <ul>
+    <h2>Wards and Representatives:</h2>
+    <p>{{ council_reps }}</p>
+    </ul>
 
-		<ul>
-			<h2 style="display: inline-block">Date of Creation:</h2>
-			<p style="display: inline-block; margin-left: 3px">{{ date_est }}</p>
-			<br>
-		</ul>
-		
-		<ul>
-			<h2 style="display: inline-block">Neighborhood Size:</h2>
-			<p style="display: inline-block; margin-left: 3px">{{ area }} Acres</p>
-			<br>
-		</ul>
-		
-		<ul>
-			<h2>Wards and Representatives:</h2>
-			<p>{{ council_reps }}</p>
-		</ul>
-		
-		<ul>
-			<h2>Population:</h2>
-			<p>2010 Census: {{ pop10 }}</p>
-			<p>{{ current_year }} Estimate: {{ pop_current }}</p>
-		</ul>
-		
-		<ul>
-			<h2>Housing:</h2>
-			<p>2010 Census: {{ house10 }}</p>
-			<p>{{ current_year }} Estimate: {{ house_current }} Units</p>
-		</ul>
-		
-		<ul>
-			<h2 style="display: inline-block">Miles of Trail:</h2>
-			<p style="display: inline-block; margin-left: 3px">{{ trail_mi }}</p>
-			<br>
-		</ul>
-		
-		<ul>
-			<!--<h2 style="display: inline-block">Parks & Open Space:</h2>
-			<p style="display: inline-block; margin-left: 3px">{{ park_acres }} Acres</p>
-			<br>-->
-			<h2>Parks and Open Space:</h2>
-			<p>{{ parks }}</p>
-			<p>{{ park_acres }} Acres</p>
-		</ul>
-		
-		<ul>
-			<h2>Public Facilities:</h2>
-			<p>{{ pub_fac }}</p>
-		</ul>
-		
-		<ul>
-			<h2>Schools:</h2>
-			<p>{{ schools }}</p>
-		</ul>
-		
-		<ul>
-			<h2>Grocery Stores:</h2>
-			<p>{{ groceries }}</p>
-		</ul>
-		
-		<ul>
-			<h2>Historic Resources:</h2>
-			<p>{{ hist_res }}</p>
-		</ul>
+    <ul>
+    <h2>Population:</h2>
+    <p>2010 Census: {{ pop10 }}</p>
+    <p>{{ current_year }} Estimate: {{ pop_current }}</p>
+    </ul>
 
-		<h2>New Development:</h2>
-		<p>{{ new_dev }}</p><br>
-		
-		<ul>
-			<h2>Guiding Documents:</h2>
-			<p>{{ guide_docs }}</p>
-		</ul>
+    <ul>
+    <h2>Housing:</h2>
+    <p>2010 Census: {{ house10 }} Units</p>
+    <p>{{ current_year }} Estimate: {{ house_current }} Units</p>
+    </ul>
 
-	</div>
+    <ul>
+    <h2 style="display: inline-block">Miles of Trail:</h2>
+    <p style="display: inline-block; margin-left: 3px">{{ trail_mi }}</p>
+    <br>
+    </ul>
+
+    <ul>
+    <!--<h2 style="display: inline-block">Parks & Open Space:</h2>
+    <p style="display: inline-block; margin-left: 3px">{{ park_acres }} Acres</p>
+    <br>-->
+    <h2>Parks and Open Space:</h2>
+    <p>{{ parks }}</p>
+    <p>{{ park_acres }} Acres</p>
+    </ul>
+
+    <ul>
+    <h2>Public Facilities:</h2>
+    <p>{{ pub_fac }}</p>
+    </ul>
+
+    <ul>
+    <h2>Schools:</h2>
+    <p>{{ schools }}</p>
+    </ul>
+
+    <ul>
+    <h2>Grocery Stores:</h2>
+    <p>{{ groceries }}</p>
+    </ul>
+
+    <ul>
+    <h2>Historic Resources:</h2>
+    <p>{{ hist_res }}</p>
+    </ul>
+
+    <h2>New Development:</h2>
+    <p>{{ new_dev }}</p><br>
+
+    <ul>
+    <h2>Guiding Documents:</h2>
+    <p>{{ guide_docs }}</p>
+    </ul>
+
+    </div>
+  </div>
 </body>
